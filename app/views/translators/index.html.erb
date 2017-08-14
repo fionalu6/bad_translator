@@ -1,0 +1,15 @@
+<h1>不推薦譯者列表</h1>
+
+<ul>
+  <% @translators.each do |translator| %>
+  <li>
+    <%= link_to translator.name, translator %>
+    <%= translator.book_title %>
+    <%= translator.isbn %>
+    <%= link_to "編輯", edit_translator_path(translator) %>
+    <%= link_to "刪除", translator, method: "delete", data: {confirm: "確定要刪除這筆譯者資料？"}  %>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to "新增譯者", new_translator_path %>

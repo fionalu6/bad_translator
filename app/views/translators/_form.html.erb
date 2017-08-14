@@ -1,0 +1,14 @@
+<% if translator.errors.any? %>
+<ul>
+  <% translator.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_for translator do |f| %>
+  姓名：<%= f.text_field :name %><br />
+  書名：<%= f.text_field :book_title %><br />
+  ISBN：<%= f.text_field :isbn %><br />
+  <%= f.submit "送出" %>
+<% end %>
