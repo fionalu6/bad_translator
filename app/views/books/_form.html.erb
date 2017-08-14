@@ -1,0 +1,17 @@
+<% if book.errors.any? %>
+<ul>
+  <% book.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_for book do |f| %>
+  <% book.translator do |t| %>
+    譯者：<%= t.text_field :name %><br />
+  <% end %>
+  書名：<%= f.text_field :title %><br />
+  ISBN：<%= f.text_field :isbn %><br />
+  舉例：<%= f.text_area :comment %><br />
+  <%= f.submit "送出" %>
+<% end %>

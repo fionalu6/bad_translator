@@ -1,0 +1,16 @@
+<h1>書籍列表</h1>
+
+<ul>
+  <% @books.each do |book| %>
+  <li>
+    <%= link_to book.title, book %>
+    <%= translator.name %>
+    <%= book.isbn %>
+    <%= book.comment %>
+    <%= link_to "編輯", edit_book_path(book) %>
+    <%= link_to "刪除", book, method: "delete", data: {confirm: "確定要刪除這筆書籍資料？"}  %>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to "新增書籍", new_book_path %>

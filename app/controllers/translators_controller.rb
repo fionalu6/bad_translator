@@ -13,7 +13,7 @@ class TranslatorsController < ApplicationController
   end
 
   def create
-    @translator = Translator.new(translator_params)
+    @translator = Translator.new(book_params)
     if @translator.save
       redirect_to translators_path, notice: "新增成功！"
     else
@@ -25,7 +25,7 @@ class TranslatorsController < ApplicationController
   end
 
   def update
-    if @translator.update(translator_params)
+    if @translator.update(book_params)
       redirect_to translators_path, notice: "更新成功！"
     else
       render :edit
@@ -43,7 +43,7 @@ class TranslatorsController < ApplicationController
     redirect_to translators_path unless @translator
   end
 
-  def translator_params
-    params.require(:translator).permit(:name, :book_title, :isbn, :comment)
+  def book_params
+    params.require(:translator).permit(:name, :title, :isbn, :comment)
   end
 end
