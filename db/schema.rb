@@ -10,26 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814092417) do
+ActiveRecord::Schema.define(version: 20170814135652) do
 
   create_table "books", force: :cascade do |t|
-    t.integer "title_id"
-    t.integer "comment_id"
+    t.string "title"
+    t.integer "isbn", limit: 8
+    t.text "comment"
     t.integer "translator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_books_on_comment_id"
-    t.index ["title_id"], name: "index_books_on_title_id"
     t.index ["translator_id"], name: "index_books_on_translator_id"
   end
 
   create_table "translators", force: :cascade do |t|
     t.string "name"
-    t.string "book_title"
-    t.integer "isbn", limit: 8
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "comment"
+  end
+
+  create_table "ware_houses", force: :cascade do |t|
+    t.integer "translator_id"
+    t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_ware_houses_on_book_id"
+    t.index ["translator_id"], name: "index_ware_houses_on_translator_id"
   end
 
 end
