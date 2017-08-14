@@ -44,6 +44,6 @@ class TranslatorsController < ApplicationController
   end
 
   def translator_params
-    params.require(:translator).permit(:name, :book_title, :isbn)
+    params.require(:translator).permit(:name, :book_title, :isbn, :comment)
   end
 end

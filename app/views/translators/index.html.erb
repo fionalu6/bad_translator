@@ -6,6 +6,7 @@
     <%= link_to translator.name, translator %>
     <%= translator.book_title %>
     <%= translator.isbn %>
+    <%= translator.comment %>
     <%= link_to "編輯", edit_translator_path(translator) %>
     <%= link_to "刪除", translator, method: "delete", data: {confirm: "確定要刪除這筆譯者資料？"}  %>
   </li>
